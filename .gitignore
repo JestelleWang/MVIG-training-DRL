@@ -1,2 +1,18 @@
 
 *.pdf
+
+*.sty
+
+*.bib
+
+*.log
+
+*.aux
+
+*.gz
+
+*.bst
+
+paper/latex/README.txt
+
+paper/latex/egpaper_for_review.tex
