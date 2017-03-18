@@ -151,6 +151,24 @@ GANs try to find a balance between generator and discriminator.
 Today most GANs are based on the DCGAN architecture. I would like to simply introduce some insights of it. The first is 
 using the all convolutional net  which replaces deterministic spatial pooling functions (such as maxpooling) with strided convolutions, allowing the network to learn its own spatial downsampling. It removes fully connected layers for deeper architectures. Next is the trend towards eliminating fully connected layers on top of convolutional features.  Third is using batch normalization layers in most layers of both the discriminator and the generator, with the two minibatches for the discriminator normalized separately. Finally, it uses Adam optimizer instead of SGD.
 
+\subsection{Ideas to combine GAN with RL}
+
+In this part, I would propose two measures to make a combination of GAN and RL. These guesses are just my ideas in a 
+low level awareness, so they still need to design experiments to validate.
+
+First, it is necessary to balance the two players to prevent one from overpowering the other. And I guess whether we can
+let RL play a role of judger to make a balance between generator and discriminator. Obviously it is a dynamic 
+programming problem, and a comparison between adjusting the optimizer of generator and discriminator by different
+algorithms, such as greedy and DP, is worthwhile to be done. 
+
+Next, I have asked myself what the growth and evolution of generator and discriminator look like. Finally I come up with
+the coevolution between humans and environments. Then I take the generator as the agent while take the discriminator
+as the environment in a reinforcement learning system. The generator's action is to generate the sample data and the 
+environment's reward is the discriminator's output. Also, discriminator acts as the model of environments. The only 
+difficulty is how to define the policy functions. After all, it is just my guess and needs to try.
+
+Above is my ideas and maybe I need more time to think of those.
+
 \section{Conclusion}
 
 In summary, I have walked through the world of RL and GAN and made a varieties of ideas.  In this training stage, I have 
