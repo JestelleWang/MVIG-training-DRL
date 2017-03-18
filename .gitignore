@@ -16,3 +16,7 @@
 paper/latex/README.txt
 
 paper/latex/egpaper_for_review.tex
+
+*.bbl
+
+*.blg
