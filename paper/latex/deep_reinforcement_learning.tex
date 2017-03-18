@@ -57,7 +57,7 @@ Shanghai, China\\
 \section{Introduction}
 
 Reinforcement learning explicitly considers the whole problem of a goal-directed agent interacting
-with an uncertain environment. It faces the challenge of the trade-off between exploration and exploitation.
+with an uncertain environment. It faces the challenge of the trade-off between exploration and exploitation\cite{ref0}.
 Generated adversarial networks is considered as a zero-sum game between generator and discriminator.  
 In this paper, I give an explanation of these theory in a beginner level and try to express my comments.
 
@@ -95,7 +95,7 @@ the environment to actions to be taken when in those states.
 
 Reinforcement learning can be divided into two categories: model-based and model-free. The former, considered as 
 planning methods, require a model of the environment, such as planning methods, while the latter, considered as learning
-methods, that can be used without a  model, such as Monte Carlo and temporal-difference methods.  
+methods, that can be used without a  model, such as Monte Carlo and temporal-difference methods\cite{ref0}.  
 
 The model-based algorithms contain a generative model. Generative models of time-series data can be used to
 simulate possible futures and could be used for planning and for reinforcement learning in a variety of ways. A 
@@ -115,7 +115,7 @@ DeepMind have trained a DQN to play Atari game, regarded as the start of deep re
 speaking, deep reinforcement learning is just a combination of deep learning and reinforcement learning. To give more
 details, it uses deep network to represent value function, policy or even model, and optimizes them end-to-end by 
 using stochastic gradient descent. For example, in the Atari game, the deep network receives every frames of the 
-game UI as input and outputs vectors as the state of the reinforcement learning agent, which we can called AI. Then AI
+game UI as input and outputs vectors as the state and the value of the reinforcement learning agent, which we can called AI. Then AI
 use Q-Learning to make a decision and behave an action. Do you still think DRL something complicated or unreadable?   
 
 In my words, deep learning could be the "eyes" of AI, and reinforcement learning is exactly the "brain". Deep learning 
@@ -142,14 +142,14 @@ what I have learned, and these have ever surprised me more than DRL.
 
 To totally understand generative models, maximum likelihood estimation maybe a good start. Because of the limited time 
 and space, I have to jump it and talk about GANs directly. As the name of "Adversary", the basic idea of GANs is to set up
-a game between two players. One is the generator, who creates samples that are intended to come from the same 
+a game between two players\cite{GAN}. One is the generator, who creates samples that are intended to come from the same 
 distribution as the training data, the other player is the discriminator, who examines samples that are come from real or fake and learns using traditional supervised learning techniques. The generator always try to generate data like the real world data and treat the discriminator, while the discriminator always try to check whether the data come from the generator or the real world. Thus the problem become a game theory problem. 
 GANs try to find a balance between generator and discriminator.
 
 \subsection{DCGAN}
 
-Today most GANs are based on the DCGAN architecture. I would like to simply introduce some insights of it. The first is 
-using the all convolutional net  which replaces deterministic spatial pooling functions (such as maxpooling) with strided convolutions, allowing the network to learn its own spatial downsampling. It removes fully connected layers for deeper architectures. Next is the trend towards eliminating fully connected layers on top of convolutional features.  Third is using batch normalization layers in most layers of both the discriminator and the generator, with the two minibatches for the discriminator normalized separately. Finally, it uses Adam optimizer instead of SGD.
+Today most GANs are based on the DCGAN architecture\cite{ref1}. I would like to simply introduce some insights of it. The first is 
+using the all convolutional net  which replaces deterministic spatial pooling functions (such as maxpooling) with strided convolutions, allowing the network to learn its own spatial downsampling. It removes fully connected layers for deeper architectures. Next is the trend towards eliminating fully connected layers on top of convolutional features.  Third is using batch normalization layers\cite{batch} in most layers of both the discriminator and the generator, with the two minibatches for the discriminator normalized separately. Finally, it uses Adam optimizer\cite{adam} instead of SGD.
 
 \subsection{Ideas to combine GAN with RL}
 
@@ -175,227 +175,16 @@ In summary, I have walked through the world of RL and GAN and made a varieties o
 greatly developed my skills of reading papers and writing codes. Last but not the least, I have found my directions and 
 interests. In the next stage, I would like to delve deeper and do something amazing.
 
+\begin{thebibliography}{99}
+\bibitem[1]{ref0} Richard S. Sutton, Andrew G. Barto (2016). Reinforcement Learning: An Introduction. https://webdocs.cs.ualberta.ca/~sutton/book/bookdraft2016sep.pdf
+\bibitem[2]{GAN} Ian Goodfellow. NIPS 2016 Tutorial: Generative Adversarial Networks. arXiv preprint arXiv:1701.00160
+\bibitem[3]{ref1}  Radford, A., Metz, L., and Chintala, S. (2015). Unsupervised representation learning with deep convolutional generative adversarial networks. arXiv preprint arXiv:1511.06434
+\bibitem[4]{batch} Ioffe, S. and Szegedy, C. (2015). Batch normalization: Accelerating deep net- work training by reducing internal covariate shift
+\bibitem[5]{adam} Kingma, D. and Ba, J. (2014). Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980
+\end{thebibliography}
+
 {\small
 \bibliographystyle{ieee}
 \bibliography{egbib}
 }
-
 \end{document}
-
-%%-------------------------------------------------------------------------
-%\subsection{Language}
-
-%All manuscripts must be in English.
-
-%\subsection{Dual submission}
-
-%Please refer to the author guidelines on the CVPR 2015 web page for a
-%discussion of the policy on dual submissions.
-
-%\subsection{Paper length}
-%For CVPR 2015, the rules about paper length have changed, so please
-%read this section carefully. Papers, excluding the references section,
-%must be no longer than eight pages in length. The references section
-%will not be included in the page count, and there is no limit on the
-%length of the references section. For example, a paper of eight pages
-%with two pages of references would have a total length of 10 pages.
-%{\bf Unlike previous years, there will be no extra page charges for
-%  CVPR 2015.}
-
-%Overlength papers will simply not be reviewed.  This includes papers
-%where the margins and formatting are deemed to have been significantly
-%altered from those laid down by this style guide.  Note that this
-%\LaTeX\ guide already sets figure captions and references in a smaller font.
-%The reason such papers will not be reviewed is that there is no provision for
-%supervised revisions of manuscripts.  The reviewing process cannot determine
-%the suitability of the paper for presentation in eight pages if it is
-%reviewed in eleven.  
-
-%%-------------------------------------------------------------------------
-%\subsection{The ruler}
-%The \LaTeX\ style defines a printed ruler which should be present in the
-%version submitted for review.  The ruler is provided in order that
-%reviewers may comment on particular lines in the paper without
-%circumlocution.  If you are preparing a document using a non-\LaTeX\
-%document preparation system, please arrange for an equivalent ruler to
-%appear on the final output pages.  The presence or absence of the ruler
-%should not change the appearance of any other content on the page.  The
-%camera ready copy should not contain a ruler. (\LaTeX\ users may uncomment
-%the \verb'\cvprfinalcopy' command in the document preamble.)  Reviewers:
-%note that the ruler measurements do not align well with lines in the paper
-%--- this turns out to be very difficult to do well when the paper contains
-%many figures and equations, and, when done, looks ugly.  Just use fractional
-%references (e.g.\ this line is $095.5$), although in most cases one would
-%expect that the approximate location will be adequate.
-
-%\subsection{Mathematics}
-
-%Please number all of your sections and displayed equations.  It is
-%important for readers to be able to refer to any particular equation.  Just
-%because you didn't refer to it in the text doesn't mean some future reader
-%might not need to refer to it.  It is cumbersome to have to use
-%circumlocutions like ``the equation second from the top of page 3 column
-%1''.  (Note that the ruler will not be present in the final copy, so is not
-%an alternative to equation numbers).  All authors will benefit from reading
-%Mermin's description of how to write mathematics:
-%\url{http://www.pamitc.org/documents/mermin.pdf}.
-%
-
-%\subsection{Blind review}
-
-%Many authors misunderstand the concept of anonymizing for blind
-%review.  Blind review does not mean that one must remove
-%citations to one's own work---in fact it is often impossible to
-%review a paper unless the previous citations are known and
-%available.
-
-%Blind review means that you do not use the words ``my'' or ``our''
-%when citing previous work.  That is all.  (But see below for
-%techreports.)
-
-%Saying ``this builds on the work of Lucy Smith [1]'' does not say
-%that you are Lucy Smith; it says that you are building on her
-%work.  If you are Smith and Jones, do not say ``as we show in
-%[7]'', say ``as Smith and Jones show in [7]'' and at the end of the
-%paper, include reference 7 as you would any other cited work.
-
-%An example of a bad paper just asking to be rejected:
-%\begin{quote}
-%\begin{center}
-%    An analysis of the frobnicatable foo filter.
-%\end{center}
-
-%   In this paper we present a performance analysis of our
-%   previous paper [1], and show it to be inferior to all
-%   previously known methods.  Why the previous paper was
-%   accepted without this analysis is beyond me.
-
-%   [1] Removed for blind review
-%\end{quote}
-%
-
-%An example of an acceptable paper:
-
-%\begin{quote}
-%\begin{center}
-%     An analysis of the frobnicatable foo filter.
-%\end{center}
-
-%   In this paper we present a performance analysis of the
-%   paper of Smith \etal [1], and show it to be inferior to
-%   all previously known methods.  Why the previous paper
-%   was accepted without this analysis is beyond me.
-
-%   [1] Smith, L and Jones, C. ``The frobnicatable foo
-%   filter, a fundamental contribution to human knowledge''.
-%   Nature 381(12), 1-213.
-%\end{quote}
-
-%If you are making a submission to another conference at the same time,
-%which covers similar or overlapping material, you may need to refer to that
-%submission in order to explain the differences, just as you would if you
-%had previously published related work.  In such cases, include the
-%anonymized parallel submission~\cite{Authors14} as additional material and
-%cite it as
-%\begin{quote}
-%[1] Authors. ``The frobnicatable foo filter'', F\&G 2014 Submission ID 324,
-%Supplied as additional material {\tt fg324.pdf}.
-%\end{quote}
-
-%Finally, you may feel you need to tell the reader that more details can be
-%found elsewhere, and refer them to a technical report.  For conference
-%submissions, the paper must stand on its own, and not {\em require} the
-%reviewer to go to a techreport for further details.  Thus, you may say in
-%the body of the paper ``further details may be found
-%in~\cite{Authors14b}''.  Then submit the techreport as additional material.
-%Again, you may not assume the reviewers will read this material. 
-
-%Sometimes your paper is about a problem which you tested using a tool which
-%is widely known to be restricted to a single institution.  For example,
-%let's say it's 1969, you have solved a key problem on the Apollo lander,
-%and you believe that the CVPR70 audience would like to hear about your
-%solution.  The work is a development of your celebrated 1968 paper entitled
-%``Zero-g frobnication: How being the only people in the world with access to
-%the Apollo lander source code makes us a wow at parties'', by Zeus \etal.
-
-%You can handle this paper like any other.  Don't write ``We show how to
-%improve our previous work [Anonymous, 1968].  This time we tested the
-%algorithm on a lunar lander [name of lander removed for blind review]''.
-%That would be silly, and would immediately identify the authors. Instead
-%write the following:
-%\begin{quotation}
-%\noindent
-%   We describe a system for zero-g frobnication.  This
-%   system is new because it handles the following cases:
-%   A, B.  Previous systems [Zeus et al. 1968] didn't
-%   handle case B properly.  Ours handles it by including
-%   a foo term in the bar integral.
-
-%   ...
-
-%   The proposed system was integrated with the Apollo
-%   lunar lander, and went all the way to the moon, don't
-%   you know.  It displayed the following behaviours
-%   which show how well we solved cases A and B: ...
-%\end{quotation}
-%As you can see, the above text follows standard scientific convention,
-%reads better than the first version, and does not explicitly name you as
-%the authors.  A reviewer might think it likely that the new paper was
-%written by Zeus \etal, but cannot make any decision based on that guess.
-%He or she would have to be sure that no other authors could have been
-%contracted to solve problem B.
-
-%FAQ: Are acknowledgements OK?  No.  Leave them for the final copy.
-%
-
-%\begin{figure}[t]
-%\begin{center}
-%\fbox{\rule{0pt}{2in} \rule{0.9\linewidth}{0pt}}
-%   %\includegraphics[width=0.8\linewidth]{egfigure.eps}
-%\end{center}
-%   \caption{Example of caption.  It is set in Roman so that mathematics
-%   (always set in Roman: $B \sin A = A \sin B$) may be included without an
-%   ugly clash.}
-%\label{fig:long}
-%\label{fig:onecol}
-%\end{figure}
-
-%\subsection{Miscellaneous}
-
-%\noindent
-%Compare the following:\\
-%\begin{tabular}{ll}
-% \verb'$conf_a$' &  $conf_a$ \\
-% \verb'$\mathit{conf}_a$' & $\mathit{conf}_a$
-%\end{tabular}\\
-%See The \TeX book, p165.
-
-%The space after \eg, meaning ``for example'', should not be a
-%sentence-ending space. So \eg is correct, {\em e.g.} is not.  The provided
-%\verb'\eg' macro takes care of this.
-
-%When citing a multi-author paper, you may save space by using ``et alia'',
-%shortened to ``\etal'' (not ``{\em et.\ al.}'' as ``{\em et}'' is a complete word.)
-%However, use it only when there are three or more authors.  Thus, the
-%following is correct: ``
-%   Frobnication has been trendy lately.
-%   It was introduced by Alpher~\cite{Alpher02}, and subsequently developed by
-%   Alpher and Fotheringham-Smythe~\cite{Alpher03}, and Alpher \etal~\cite{Alpher04}.''
-
-%This is incorrect: ``... subsequently developed by Alpher \etal~\cite{Alpher03} ...''
-%because reference~\cite{Alpher03} has just two authors.  If you use the
-%\verb'\etal' macro provided, then you need not worry about double periods
-%when used at the end of a sentence as in Alpher \etal.
-
-%For this citation style, keep multiple citations in numerical (not
-%chronological) order, so prefer \cite{Alpher03,Alpher02,Authors14} to
-%\cite{Alpher02,Alpher03,Authors14}.
-%
-
-%\begin{figure*}
-%\begin{center}
-%\fbox{\rule{0pt}{2in} \rule{.9\linewidth}{0pt}}
-%\end{center}
-%   \caption{Example of a short caption, which should be centered.}
-%\label{fig:short}
-%\end{figure*}
